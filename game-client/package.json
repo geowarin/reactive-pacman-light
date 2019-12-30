@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html --port=9000",
-    "protocgrpcnodets": "./proto-ts.sh"
+    "proto": "./proto-ts.sh"
   },
   "author": "",
   "license": "ISC",

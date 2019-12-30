@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package org.coinen.pacman;
+
+import "google/protobuf/empty.proto";
+import "rsocket/options.proto";
+import "player.proto";
+import "location.proto";
+import "point.proto";
+import "size.proto";
+import "speed.proto";
+import "tile.proto";
+import "extra.proto";
+import "map.proto";
+import "config.proto";
+import "score.proto";
+
+option java_package = "org.coinen.pacman";
+option java_multiple_files = true;
+
+service MapService {
+    rpc setup(Map) returns (google.protobuf.Empty) {
+        option (io.rsocket.rpc.options) = {
+            fire_and_forget: true
+        };
+    }
+}
+
+service SetupService {
+
+    rpc get(google.protobuf.Empty) returns (Map) {}
+}
+
+service GameService {
+    rpc start (Nickname) returns (Config) {}
+}
+
+service PlayerService {
+    rpc locate(stream Location) returns (google.protobuf.Empty) {}
+
+    rpc players(google.protobuf.Empty) returns (stream Player) {}
+}
+
+service LocationService {
+    rpc locate(Location) returns (google.protobuf.Empty) {}
+}
+
+service ExtrasService {
+    rpc extras(google.protobuf.Empty) returns (stream Extra) {}
+}
+
+service ScoreService {
+    rpc score(Player) returns (stream Score) {}
+}
