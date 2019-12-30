@@ -1,5 +1,6 @@
 package org.coinen.reactive.pacman.controller.rsocket.config;
 
+import io.rsocket.SocketAcceptor;
 import io.rsocket.rpc.RSocketRpcService;
 import io.rsocket.rpc.rsocket.RequestHandlingRSocket;
 import org.coinen.pacman.ExtrasServiceServer;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+import org.springframework.messaging.rsocket.annotation.support.RSocketMessageHandler;
 
 import java.util.Optional;
 
@@ -47,6 +49,16 @@ public class RSocketGameServerConfig {
     @Bean
     public PlayerServiceServer playerServiceServer(PlayerService playerService) {
         return new PlayerServiceServer(new PlayerController(playerService), Optional.empty(), Optional.empty(), Optional.empty());
+    }
+
+    @Bean
+    RSocketMessageHandler messageHandler(SetupController setupController) {
+        return new RSocketMessageHandler() {
+            @Override
+            public SocketAcceptor responder() {
+                return setupController;
+            }
+        };
     }
 
     @Bean

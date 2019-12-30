@@ -50,8 +50,8 @@ export class Boot extends Scene {
                 // ),
                 transport: new RSocketWebSocketClient(
                     {
-                        // url: urlParams.get('endpoint') || 'ws://localhost:3000',
-                        url: urlParams.get('endpoint') || 'ws://dinoman.netifi.com:3000',
+                        url: urlParams.get('endpoint') || 'ws://localhost:3000',
+                        // url: urlParams.get('endpoint') || 'ws://dinoman.netifi.com:3000',
                     } as any,//TODO: FIXME
                     BufferEncoders
                 ),
