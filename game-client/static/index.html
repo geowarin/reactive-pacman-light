@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 user-scalable=0 minimal-ui">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="Reactive Pac-Man">
+  <title>Netifi Pac-Man</title>
+  <link rel="stylesheet" href="css/spinkit.css">
+  <link rel="stylesheet" href="css/main.css?v=4">
+
+  <link rel="stylesheet" href="css/vendor/avgrund.css">
+</head>
+
+<body>
+  <script>
+    window.grpc = {
+      makeGenericClientConstructor: () => {}
+    }
+  </script>
+  <div id="phaser-overlay-container" width="1280" height="720">
+    <div id="phaser-overlay">
+      <div class="main login avgrund-popup">
+        <h3>DINOMAN.IO</h3>
+        <input class="main-inputs" type='text' placeholder='Nickname' id='nickname' maxlength='13' spellcheck='false'>
+        <input class="main-inputs" type='submit' value='Play'>
+
+        <form id="radio">
+          <input id="toggle-on" class="toggle toggle-left" name="toggle" value="false" type="radio" checked>
+          <label for="toggle-on" class="btn">Swipe</label>
+          <input id="toggle-off" class="toggle toggle-right" name="toggle" value="true" type="radio">
+          <label for="toggle-off" class="btn">Quadrants</label>
+        </form>
+      </div>
+      <div class="login-error login avgrund-popup">
+        <h3></h3>
+        <p></p>
+      </div>
+      <div class="loader">
+        <div>
+          <h3>Ghosts have compasses that can track down dinos.</h3>
+          <h3>If a dino eats a powerup, dinos can eat ghosts!</h3>
+        </div>
+        <div class="sk-folding-cube">
+          <div class="sk-cube1 sk-cube"></div>
+          <div class="sk-cube2 sk-cube"></div>
+          <div class="sk-cube4 sk-cube"></div>
+          <div class="sk-cube3 sk-cube"></div>
+        </div>
+      </div>
+      <div class="leaderboard">
+        <h3>Leaderboard</h3>
+        <ol>
+          <li>Boss Tweed</li>
+          <li>Mister Bean</li>
+          <li>Boss Tweedfjldkj</li>
+          <li>Mister Bean</li>
+        </ol>
+      </div>
+      <div class="score">
+        <p>Score: 728</p>
+      </div>
+      <div class="notification-tray">
+        <div>
+          <p>Use your tracker to hunt down enemies!</p>
+        </div>
+        <div>
+          <p>Use your tracker to hunt down enemies!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="canvas-container">
+
+  </div>
+
+<div id="to-scroll">
+  Scroll me UP to hide nav bar
+</div>
+</body>
+</html>

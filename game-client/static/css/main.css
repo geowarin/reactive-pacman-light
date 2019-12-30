@@ -1,0 +1,475 @@
+html {
+    background-color: #116;
+    height: 100%;
+    overflow: scroll;
+}
+
+html { 
+    background-image: url('../asset/loonride/logo-colored-small.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center 99.5%;
+    background-size: auto 3%;
+    /*overflow: hidden!important;*/
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #116;
+    color: #333;
+    font: caption;
+    display: block;
+    /*overflow: hidden!important;*/
+}
+
+@font-face {
+    font-family: "Nexa Bold";
+    src: url("../fonts/nexa.otf");
+    src: url('../fonts/nexa.ttf') format('truetype');
+}
+    
+#to-scroll {
+    display: none;
+    width: 100%;
+    height: 100px;
+    bottom: 50px;
+    position: absolute;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+}
+
+#phaser-container {
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#canvas-container {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+canvas {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#phaser-overlay-container {
+    z-index: 998;
+    position: relative;
+    display: none;
+    pointer-events: none;
+}
+
+#phaser-overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#version {
+    position: absolute;
+    left: 5px;
+    top: 605px;
+}
+
+#logo {
+    z-index: 1;
+    position: relative;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.avgrund-popup {
+    font-family: "Nexa Bold", Arial;
+    font-weight: 700;
+    text-align: center;
+}
+
+.avgrund-popup p {
+    font-size: 14px;
+    font-family: Arial;
+    font-weight: 500;
+}
+
+.avgrund-popup p a {
+    text-decoration: none;
+    border-radius: 3px;
+    padding: 3px 5px;
+    color: white;
+    background-color: #F6416C;
+}
+
+.avgrund-popup h3 {
+    font-size: 24px;
+    font-weight: 400;
+    color: #111;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.avgrund-popup > input {
+    width: 90%;
+    padding: 5%;
+    border-radius: 3px;
+    display: block;
+    margin: 10px auto;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-family: "Open Sans";
+    font-weight: 600;
+}
+
+.avgrund-popup > input[type="text"] {
+    background-image: linear-gradient( 45deg, rgb(226, 226, 226) 10%, rgb(250, 250, 250) 100%);
+}
+
+.avgrund-popup > input[type="submit"] {
+    background-image: linear-gradient( 135deg, #FEB692 10%, #EA5455 100%);
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+}
+
+#phaser-overlay .leaderboard, #phaser-overlay .score {
+    position: absolute;
+    background-color: rgba(0, 0, 0, .1);
+    border-radius: 3px;
+    color: white;
+    text-align: center;
+    font-family: Ubuntu, Arial;
+    overflow: hidden;
+}
+
+#phaser-overlay .leaderboard {
+    top: 10px;
+    right: 10px;
+    width: 200px;
+    max-height: 25%;
+}
+
+#phaser-overlay .score {
+    left: 10px;
+    bottom: 10px;
+}
+
+#phaser-overlay .score p {
+    margin: 3px 6px;
+}
+
+#phaser-overlay .leaderboard h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+#phaser-overlay .leaderboard ol {
+    text-align: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 35px;
+}
+
+#phaser-overlay .leaderboard ol li {
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+#phaser-overlay .leaderboard ol li.me {
+    color: rgb(235, 67, 117);
+}
+
+#phaser-overlay .notification-tray {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    font-family: Ubuntu, Arial;
+    color: white;
+}
+
+#phaser-overlay .notification-tray div {
+    text-align: center;
+    background-color: rgba(0, 0, 0, .1);
+    border-radius: 3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+#phaser-overlay .notification-tray div p {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 10px;
+}
+
+#phaser-overlay .loader {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#phaser-overlay .login {
+    width: 330px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0px 0px 20px rgba( 0, 0, 0, 0.6 );
+}
+
+#phaser-overlay .login-error {
+}
+
+.ad-container {
+    width: 300px;
+    height: 250px;
+    /* width: 336px;
+    height: 280px; */
+    margin: auto;
+    margin-bottom: 14px;
+    display: block;
+}
+
+@media (max-height: 550px) {
+    .ad-container {
+        display: none;
+    }
+}
+
+.youtube {
+    position: absolute;
+
+}
+
+.main {
+    display: none;
+}
+
+.gutter {
+    position: absolute;
+    width: 300px;
+    top: 30%;
+    z-index: 999;
+}
+
+@media (max-height: 800px) {
+    .gutter {
+        position: absolute;
+        width: 300px;
+        top: 15%;
+        z-index: 999;
+    }
+}
+
+.youtube {
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0px 0px 12px rgba( 0, 0, 0, 0.6 );
+}
+
+.left-gutter {
+    left: 50%;
+    transform: translateX(-490px);
+}
+
+.right-gutter {
+    right: 50%;
+    transform: translateX(490px);
+}
+
+.discord iframe {
+    margin-top: 0px !important;
+    box-shadow: 0px 0px 12px rgba( 0, 0, 0, 0.6 );
+}
+
+.discord {
+    background-color: transparent;
+}
+
+@media (max-width: 1050px) {
+    .gutter {
+        display: none;
+    }
+}
+
+@media (max-height: 550px) {
+    .gutter {
+        top: 50%;
+    }
+    
+    .left-gutter {
+        transform: translate(-510px, -50%);
+    }
+    
+    .right-gutter {
+        transform: translate(510px, -50%);
+    }
+}
+
+@media (max-height: 400px) {
+    .gutter {
+        display: none;
+    }
+}
+
+.gutter iframe {
+    margin: auto;
+    margin-top: 10px;
+    display: block;
+    margin-bottom: 10px;    
+}
+
+.gutter h5 {
+    text-align: center;
+    color: #222;
+    font-family: "Open Sans";
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#___ytsubscribe_0 {
+    margin-left: 10px !important;
+    margin-top: 10px !important;
+}
+
+.btn {
+    border: 3px solid #EA5455;
+    display: inline-block;
+    padding: 2px 5px;
+    position: relative;
+    text-align: center;
+    transition: background 600ms ease, color 600ms ease;
+    margin-bottom: 8px;
+  }
+  
+  input[type="radio"].toggle {
+    display: none;
+  }
+  input[type="radio"].toggle + label {
+    cursor: pointer;
+    min-width: 80px;
+  }
+  input[type="radio"].toggle + label:hover {
+    background: none;
+    color: #EA5455;
+  }
+  input[type="radio"].toggle + label:after {
+    background: #EA5455;
+    border: 1px solid #EA5455;
+    content: "";
+    height: 100%;
+    position: absolute;
+    top: 0;
+    transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+    width: 100%;
+    z-index: -1;
+  }
+  input[type="radio"].toggle.toggle-left + label {
+    border-right: 0;
+  }
+  input[type="radio"].toggle.toggle-left + label:after {
+    left: 100%;
+  }
+  input[type="radio"].toggle.toggle-right + label {
+    margin-left: -5px;
+  }
+  input[type="radio"].toggle.toggle-right + label:after {
+    left: -100%;
+  }
+  input[type="radio"].toggle:checked + label {
+    cursor: default;
+    color: #fff;
+    transition: color 200ms;
+  }
+  input[type="radio"].toggle:checked + label:after {
+    left: 0;
+  }
+  
+.left-gutter a {
+    margin: auto;
+    width: 200px;
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.left-gutter a img {
+    margin: auto;
+    max-width: 100%;
+}
+
+.loader {
+    color: white;
+    text-align: center;
+    width: 80%;
+}
+
+.loader h3 {
+    font-family: Ubuntu;
+    font-weight: 400;
+}
+
+#mini-cont {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    margin-bottom: 16px;
+}
+
+#rect-cont {
+    width: 100%;
+    height: 250px;
+}
+
+#rect-cont.changelog {
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 20px;
+    height: 140px;
+    overflow-y: scroll;
+}
+
+#rect-cont.changelog h5 {
+    padding-top: 10px;
+    font-size: 16px;
+}
+
+#rect-cont.changelog ul {
+    font-size: 12px;
+    padding-left: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+#preroll {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 0;
+    top: 0;
+}

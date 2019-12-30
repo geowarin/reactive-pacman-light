@@ -1,0 +1,3 @@
+# Project exclude paths
+/game-client/.cache/
+/game-client/node_modules/

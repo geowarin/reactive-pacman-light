@@ -1,0 +1,37 @@
+{
+  "name": "game-client",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html --port=9000",
+    "protocgrpcnodets": "./proto-ts.sh"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/google-protobuf": "^3.7.2",
+    "@types/jquery": "^3.3.31",
+    "@types/rsocket-core": "0.0.3",
+    "@types/rsocket-flowable": "0.0.2",
+    "@types/rsocket-types": "0.0.2",
+    "@types/rsocket-websocket-client": "0.0.3",
+    "grpc_tools_node_protoc_ts": "^2.5.9",
+    "parcel": "^1.12.4",
+    "parcel-plugin-static-files-copy": "^2.2.1",
+    "rsocket-rpc-protobuf": "^0.1.6",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "google-protobuf": "^3.11.2",
+    "phaser": "^3.21.0",
+    "reactor-core-js": "^0.5.0",
+    "rsocket-core": "0.0.18",
+    "rsocket-flowable": "0.0.14",
+    "rsocket-rpc-core": "^0.1.6",
+    "rsocket-rpc-metrics": "^0.1.6",
+    "rsocket-rpc-tracing": "^0.1.6",
+    "rsocket-types": "0.0.16",
+    "rsocket-websocket-client": "0.0.18"
+  }
+}
