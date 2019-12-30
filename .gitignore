@@ -9,3 +9,6 @@ build
 /game-client/node_modules/
 /game-client/dist/
 /game-client/generated/
+
+/game-idl/node_modules/
+/game-idl/generated/

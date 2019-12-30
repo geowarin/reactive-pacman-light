@@ -1,0 +1,16 @@
+{
+  "name": "game-idl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grpc_tools_node_protoc_ts": "^2.5.9",
+    "rsocket-rpc-protobuf": "^0.1.6"
+  }
+}
