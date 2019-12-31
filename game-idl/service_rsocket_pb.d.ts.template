@@ -1,0 +1,214 @@
+import * as rsocket_rpc_core from 'rsocket-rpc-core';
+import * as rsocket_flowable from 'rsocket-flowable';
+import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
+import * as player_pb from './player_pb';
+import * as location_pb from './location_pb';
+import * as point_pb from './point_pb';
+import * as size_pb from './size_pb';
+import * as speed_pb from './speed_pb';
+import * as tile_pb from './tile_pb';
+import * as extra_pb from './extra_pb';
+import * as map_pb from './map_pb';
+import * as config_pb from './config_pb';
+import * as score_pb from './score_pb';
+import { ReactiveSocket, Responder, Payload } from 'rsocket-types';
+import { Single } from 'rsocket-flowable';
+
+export interface MapService {
+
+  setup(message: map_pb.Map): void;
+  setup(message: map_pb.Map, metadata: Buffer): void;
+}
+
+export class MapServiceClient implements MapService {
+  constructor(rs: ReactiveSocket<any, any>);
+  constructor(rs: ReactiveSocket<any, any>, tracer: any);
+  constructor(rs: ReactiveSocket<any, any>, tracer: any, meterRegistry: any);
+
+  setup(message: map_pb.Map): void;
+  setup(message: map_pb.Map, metadata: Buffer): void;
+}
+
+export interface SetupService {
+
+  get(message: google_protobuf_empty_pb.Empty): Single<map_pb.Map>;
+  get(message: google_protobuf_empty_pb.Empty, metadata: Buffer): Single<map_pb.Map>;
+}
+
+export class SetupServiceClient implements SetupService {
+  constructor(rs: ReactiveSocket<any, any>);
+  constructor(rs: ReactiveSocket<any, any>, tracer: any);
+  constructor(rs: ReactiveSocket<any, any>, tracer: any, meterRegistry: any);
+
+  get(message: google_protobuf_empty_pb.Empty): Single<map_pb.Map>;
+  get(message: google_protobuf_empty_pb.Empty, metadata: Buffer): Single<map_pb.Map>;
+}
+
+export interface GameService {
+
+  start(message: player_pb.Nickname): Single<config_pb.Config>;
+  start(message: player_pb.Nickname, metadata: Buffer): Single<config_pb.Config>;  
+}
+
+export class GameServiceClient implements GameService {
+  constructor(rs: ReactiveSocket<any, any>);
+  constructor(rs: ReactiveSocket<any, any>, tracer: any);
+  constructor(rs: ReactiveSocket<any, any>, tracer: any, meterRegistry: any);
+
+  start(message: player_pb.Nickname): Single<config_pb.Config>;
+  start(message: player_pb.Nickname, metadata: Buffer): Single<config_pb.Config>;  
+}
+
+
+
+export interface PlayerService {
+  locate(message: rsocket_flowable.Flowable<location_pb.Location>): Single<google_protobuf_empty_pb.Empty>;
+  locate(message: rsocket_flowable.Flowable<location_pb.Location>, metadata: Buffer): Single<google_protobuf_empty_pb.Empty>;  
+
+  players(message: google_protobuf_empty_pb.Empty): rsocket_flowable.Flowable<player_pb.Player>;
+  players(message: google_protobuf_empty_pb.Empty, metadata: Buffer): rsocket_flowable.Flowable<player_pb.Player>;
+}
+
+export class PlayerServiceClient implements PlayerService {
+  constructor(rs: ReactiveSocket<any, any>);
+  constructor(rs: ReactiveSocket<any, any>, tracer: any);
+  constructor(rs: ReactiveSocket<any, any>, tracer: any, meterRegistry: any);
+
+
+  locate(message: rsocket_flowable.Flowable<location_pb.Location>): Single<google_protobuf_empty_pb.Empty>;
+  locate(message: rsocket_flowable.Flowable<location_pb.Location>, metadata: Buffer): Single<google_protobuf_empty_pb.Empty>;  
+
+  players(message: google_protobuf_empty_pb.Empty): rsocket_flowable.Flowable<player_pb.Player>;
+  players(message: google_protobuf_empty_pb.Empty, metadata: Buffer): rsocket_flowable.Flowable<player_pb.Player>;
+}
+
+export interface LocationService {
+  locate(message: location_pb.Location): Single<google_protobuf_empty_pb.Empty>;
+  locate(message: location_pb.Location, metadata: Buffer): Single<google_protobuf_empty_pb.Empty>;  
+}
+
+export class LocationServiceClient implements LocationService {
+  constructor(rs: ReactiveSocket<any, any>);
+  constructor(rs: ReactiveSocket<any, any>, tracer: any);
+  constructor(rs: ReactiveSocket<any, any>, tracer: any, meterRegistry: any);
+ 
+
+  locate(message: location_pb.Location): Single<google_protobuf_empty_pb.Empty>;
+  locate(message: location_pb.Location, metadata: Buffer): Single<google_protobuf_empty_pb.Empty>;  
+}
+
+export interface ExtrasService {
+  extras(message: google_protobuf_empty_pb.Empty): rsocket_flowable.Flowable<extra_pb.Extra>;
+  extras(message: google_protobuf_empty_pb.Empty, metadata: Buffer): rsocket_flowable.Flowable<extra_pb.Extra>;  
+}
+
+export class ExtrasServiceClient implements ExtrasService {
+  constructor(rs: ReactiveSocket<any, any>);
+  constructor(rs: ReactiveSocket<any, any>, tracer: any);
+  constructor(rs: ReactiveSocket<any, any>, tracer: any, meterRegistry: any);
+
+
+  extras(message: google_protobuf_empty_pb.Empty): rsocket_flowable.Flowable<extra_pb.Extra>;
+  extras(message: google_protobuf_empty_pb.Empty, metadata: Buffer): rsocket_flowable.Flowable<extra_pb.Extra>;  
+}
+
+export interface ScoreService {
+
+  score(message: player_pb.Player): rsocket_flowable.Flowable<score_pb.Score>;
+  score(message: player_pb.Player, metadata: Buffer): rsocket_flowable.Flowable<score_pb.Score>;  
+}
+
+export class ScoreServiceClient implements ScoreService {
+  constructor(rs: ReactiveSocket<any, any>);
+  constructor(rs: ReactiveSocket<any, any>, tracer: any);
+  constructor(rs: ReactiveSocket<any, any>, tracer: any, meterRegistry: any);
+  
+
+  score(message: player_pb.Player): rsocket_flowable.Flowable<score_pb.Score>;
+  score(message: player_pb.Player, metadata: Buffer): rsocket_flowable.Flowable<score_pb.Score>;  
+}
+
+export class MapServiceServer implements Responder<any, any> {
+  constructor(service: MapService);
+  constructor(service: MapService, tracer: any);
+  constructor(service: MapService, tracer: any, meterRegistry: any);
+
+  fireAndForget(payload: Payload<any, any>): void;
+  requestResponse(payload: Payload<any, any>): rsocket_flowable.Single<Payload<any, any>>;
+  requestStream(payload: Payload<any, any>): rsocket_flowable.Flowable<Payload<any, any>>;
+  requestChannel(payloads: rsocket_flowable.Flowable<Payload<any, any>>): rsocket_flowable.Flowable<Payload<any, any>>;
+  metadataPush(payload: Payload<any, any>): rsocket_flowable.Single<void>;
+}
+
+export class SetupServiceServer implements Responder<any, any> {
+  constructor(service: SetupService);
+  constructor(service: SetupService, tracer: any);
+  constructor(service: SetupService, tracer: any, meterRegistry: any);
+  
+  fireAndForget(payload: Payload<any, any>): void;
+  requestResponse(payload: Payload<any, any>): rsocket_flowable.Single<Payload<any, any>>;
+  requestStream(payload: Payload<any, any>): rsocket_flowable.Flowable<Payload<any, any>>;
+  requestChannel(payloads: rsocket_flowable.Flowable<Payload<any, any>>): rsocket_flowable.Flowable<Payload<any, any>>;
+  metadataPush(payload: Payload<any, any>): rsocket_flowable.Single<void>;
+}
+
+export class GameServiceServer implements Responder<any, any> {
+  constructor(service: GameService);
+  constructor(service: GameService, tracer: any);
+  constructor(service: GameService, tracer: any, meterRegistry: any);
+  
+  fireAndForget(payload: Payload<any, any>): void;
+  requestResponse(payload: Payload<any, any>): rsocket_flowable.Single<Payload<any, any>>;
+  requestStream(payload: Payload<any, any>): rsocket_flowable.Flowable<Payload<any, any>>;
+  requestChannel(payloads: rsocket_flowable.Flowable<Payload<any, any>>): rsocket_flowable.Flowable<Payload<any, any>>;
+  metadataPush(payload: Payload<any, any>): rsocket_flowable.Single<void>;
+}
+
+export class PlayerServiceServer implements Responder<any, any> {
+  constructor(service: PlayerService);
+  constructor(service: PlayerService, tracer: any);
+  constructor(service: PlayerService, tracer: any, meterRegistry: any);
+  
+  fireAndForget(payload: Payload<any, any>): void;
+  requestResponse(payload: Payload<any, any>): rsocket_flowable.Single<Payload<any, any>>;
+  requestStream(payload: Payload<any, any>): rsocket_flowable.Flowable<Payload<any, any>>;
+  requestChannel(payloads: rsocket_flowable.Flowable<Payload<any, any>>): rsocket_flowable.Flowable<Payload<any, any>>;
+  metadataPush(payload: Payload<any, any>): rsocket_flowable.Single<void>;
+}
+
+export class LocationServiceServer implements Responder<any, any> {
+  constructor(service: LocationService);
+  constructor(service: LocationService, tracer: any);
+  constructor(service: LocationService, tracer: any, meterRegistry: any);
+  
+  fireAndForget(payload: Payload<any, any>): void;
+  requestResponse(payload: Payload<any, any>): rsocket_flowable.Single<Payload<any, any>>;
+  requestStream(payload: Payload<any, any>): rsocket_flowable.Flowable<Payload<any, any>>;
+  requestChannel(payloads: rsocket_flowable.Flowable<Payload<any, any>>): rsocket_flowable.Flowable<Payload<any, any>>;
+  metadataPush(payload: Payload<any, any>): rsocket_flowable.Single<void>;
+}
+
+export class ExtrasServiceServer  implements Responder<any, any> {
+  constructor(service: ExtrasService);
+  constructor(service: ExtrasService, tracer: any);
+  constructor(service: ExtrasService, tracer: any, meterRegistry: any);
+  
+  fireAndForget(payload: Payload<any, any>): void;
+  requestResponse(payload: Payload<any, any>): rsocket_flowable.Single<Payload<any, any>>;
+  requestStream(payload: Payload<any, any>): rsocket_flowable.Flowable<Payload<any, any>>;
+  requestChannel(payloads: rsocket_flowable.Flowable<Payload<any, any>>): rsocket_flowable.Flowable<Payload<any, any>>;
+  metadataPush(payload: Payload<any, any>): rsocket_flowable.Single<void>;
+}
+
+export class ScoreServiceServer implements Responder<any, any> {
+  constructor(service: ScoreService);
+  constructor(service: ScoreService, tracer: any);
+  constructor(service: ScoreService, tracer: any, meterRegistry: any);
+  
+  fireAndForget(payload: Payload<any, any>): void;
+  requestResponse(payload: Payload<any, any>): rsocket_flowable.Single<Payload<any, any>>;
+  requestStream(payload: Payload<any, any>): rsocket_flowable.Flowable<Payload<any, any>>;
+  requestChannel(payloads: rsocket_flowable.Flowable<Payload<any, any>>): rsocket_flowable.Flowable<Payload<any, any>>;
+  metadataPush(payload: Payload<any, any>): rsocket_flowable.Single<void>;
+}
+

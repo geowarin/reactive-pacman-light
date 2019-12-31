@@ -12,3 +12,5 @@ build
 
 /game-idl/node_modules/
 /game-idl/generated/
+
+.idea/

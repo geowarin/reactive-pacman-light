@@ -36,7 +36,7 @@ export default class PlayerServiceClientSharedAdapter implements PlayerService {
 
                     return locationProto;
                 })
-                .compose(flux => FlowableAdapter.wrap(this.service.locate(flux as any) as any))
+                .compose(flux => FlowableAdapter.wrap(this.service.locate(flux)))
                 .consume(
                     () => {},
                     (e: Error) => subject.onError(e),
@@ -48,7 +48,7 @@ export default class PlayerServiceClientSharedAdapter implements PlayerService {
     players(): Flux<Player.AsObject> {
         if (!this.sharedPlayersStream) {
             this.sharedPlayersStream = new DirectProcessor();
-            Flux.from<Player>(FlowableAdapter.wrap(this.service.players(new Empty() as any) as any))
+            Flux.from<Player>(FlowableAdapter.wrap(this.service.players(new Empty())))
                 .map(player => player.toObject())
                 .subscribe(this.sharedPlayersStream);
         }

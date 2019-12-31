@@ -1,5 +1,4 @@
 import com.google.protobuf.gradle.*
-import org.gradle.kotlin.dsl.provider.gradleKotlinDslOf
 
 plugins {
   java
@@ -42,20 +41,18 @@ protobuf {
     artifact = "com.google.protobuf:protoc:3.6.1"
   }
   plugins {
-//    id("grpc") {
-//      artifact = "io.grpc:protoc-gen-grpc-java:1.15.1"
-//    }
-//    id("reactorGRpc") {
-//      artifact = "com.salesforce.servicelibs:reactor-grpc:0.10.0-RC1:jdk8@jar"
-//    }
     id("rsocketRpc") {
       artifact = "io.rsocket.rpc:rsocket-rpc-protobuf:0.3.0-SNAPSHOT"
+    }
+    id("ts") {
+      path = "node_modules/.bin/rsocket_rpc_js_protoc_plugin"
     }
   }
   generateProtoTasks {
     ofSourceSet("main").forEach {
       it.plugins {
         id("rsocketRpc")
+//        id("ts")
       }
     }
   }
