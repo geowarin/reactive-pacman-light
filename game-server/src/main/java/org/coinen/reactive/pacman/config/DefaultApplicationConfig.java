@@ -49,8 +49,7 @@ public class DefaultApplicationConfig {
     public GameService gameService(PlayerService playerService,
         ExtrasRepository extrasRepository, PlayerRepository playerRepository,
         MapService mapService) {
-        return new DefaultGameService(playerService, extrasRepository,
-            playerRepository, mapService);
+        return new DefaultGameService(playerService, extrasRepository, playerRepository, mapService);
     }
 
     @Bean

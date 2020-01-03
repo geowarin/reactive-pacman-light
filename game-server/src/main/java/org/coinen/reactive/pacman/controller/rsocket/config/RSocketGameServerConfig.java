@@ -25,13 +25,6 @@ import java.util.Optional;
 @Configuration
 public class RSocketGameServerConfig {
 
-// FIXME : ENABLE ZERO_COPY
-//    @Bean
-//    public RSocketReceiverCustomizer enableZeroCopyCustomizer() {
-//        return factory -> factory
-//            .frameDecoder(PayloadDecoder.ZERO_COPY);
-//    }
-
     @Bean
     public ExtrasServiceServer extrasServiceServer(
             ExtrasService extrasService
